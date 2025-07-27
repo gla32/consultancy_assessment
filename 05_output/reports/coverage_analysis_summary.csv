@@ -1,0 +1,7 @@
+Indicator,Track_Status,N_Countries,Total_Births,Weighted_Coverage_Percent,Min_Coverage_Percent,Max_Coverage_Percent,Median_Coverage_Percent
+ANC4,on-track,40.0,9612.307999999999,84.43414491872929,53.5,99.9,88.5
+ANC4,off-track,46.0,47503.621000000014,55.16237594182555,24.4,97.6,61.95
+SBA,on-track,101.0,11919.127999999999,96.42478580209975,71.5,100.0,99.1
+SBA,off-track,48.0,47510.384,73.62626699039099,31.9,100.0,83.9
+ANC4,gap_analysis,,,29.271768976903736,,,
+SBA,gap_analysis,,,22.79851881170876,,,
