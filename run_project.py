@@ -65,8 +65,8 @@ class ProjectExecutor:
         self.workflow_steps = [
             {
                 'name': 'Data Exploration',
-                'script': '03_scripts/data_preparation/01_explore_data.py',
-                'description': 'Explore raw data structure and content',
+                'script': '03_scripts/data_preparation/01_explore_data_focused.py',
+                'description': 'Explore raw data structure and content with focused analysis',
                 'expected_outputs': ['04_documentation/data_exploration_findings.md'],
                 'required': True
             },

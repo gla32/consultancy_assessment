@@ -19,9 +19,10 @@ import re
 warnings.filterwarnings('ignore')
 
 # File paths
-RAW_DATA_DIR = Path("01_raw_data")
-PROCESSED_DATA_DIR = Path("02_processed_data")
-PROCESSED_DATA_DIR.mkdir(exist_ok=True)
+# Add project root to path for imports
+import sys
+sys.path.append(str(Path(__file__).parent.parent.parent))
+from user_profile import RAW_DATA_DIR, PROCESSED_DATA_DIR, UNICEF_DATA_FILE, MORTALITY_CLASS_FILE, POPULATION_DATA_FILE, MERGED_DATA_FILE
 
 UNICEF_FILE = RAW_DATA_DIR / "GLOBAL_DATAFLOW_2018-2022.xlsx"
 POPULATION_FILE = RAW_DATA_DIR / "WPP2022_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT_REV1.xlsx"

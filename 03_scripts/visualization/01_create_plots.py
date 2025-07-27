@@ -18,8 +18,13 @@ Date: 2025
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 from pathlib import Path
 import seaborn as sns
+
+# Add project root to path for imports
+sys.path.append(str(Path(__file__).parent.parent.parent))
+from user_profile import REPORTS_DIR, FIGURES_DIR
 
 # Set style for professional appearance
 plt.style.use('default')
@@ -33,7 +38,7 @@ def load_coverage_data():
     --------
     pandas.DataFrame : Coverage analysis summary data
     """
-    data_path = Path("05_output/reports/coverage_analysis_summary.csv")
+    data_path = REPORTS_DIR / "coverage_analysis_summary.csv"
     
     if not data_path.exists():
         raise FileNotFoundError(f"Coverage analysis data not found: {data_path}")
@@ -192,12 +197,8 @@ def save_chart(fig, filename='maternal_health_coverage_comparison.png'):
     filename : str
         The filename for the saved chart
     """
-    # Create output directory if it doesn't exist
-    output_dir = Path("05_output/figures")
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
     # Save the figure
-    output_path = output_dir / filename
+    output_path = FIGURES_DIR / filename
     fig.savefig(output_path, dpi=300, bbox_inches='tight', 
                 facecolor='white', edgecolor='none')
     

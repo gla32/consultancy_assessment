@@ -14,16 +14,19 @@ Date: 2025
 import pandas as pd
 import numpy as np
 import os
+import sys
 from pathlib import Path
+
+# Add project root to path for imports
+sys.path.append(str(Path(__file__).parent.parent.parent))
+from user_profile import MERGED_DATA_FILE, REPORTS_DIR
 
 def load_data():
     """Load the merged health dataset."""
-    data_path = Path("02_processed_data/merged_health_data.csv")
+    if not MERGED_DATA_FILE.exists():
+        raise FileNotFoundError(f"Data file not found: {MERGED_DATA_FILE}")
     
-    if not data_path.exists():
-        raise FileNotFoundError(f"Data file not found: {data_path}")
-    
-    df = pd.read_csv(data_path)
+    df = pd.read_csv(MERGED_DATA_FILE)
     print(f"Loaded dataset with {len(df)} countries")
     return df
 
@@ -204,13 +207,9 @@ def save_detailed_results(df, anc4_results, sba_results):
     sba_results : dict
         SBA analysis results
     """
-    # Create output directory if it doesn't exist
-    output_dir = Path("05_output/reports")
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
     # Save summary table
     summary_table = create_summary_table(anc4_results, sba_results)
-    summary_path = output_dir / "coverage_analysis_summary.csv"
+    summary_path = REPORTS_DIR / "coverage_analysis_summary.csv"
     summary_table.to_csv(summary_path, index=False)
     print(f"\nSummary results saved to: {summary_path}")
     
@@ -236,7 +235,7 @@ def save_detailed_results(df, anc4_results, sba_results):
     detailed_df['ANC4_Category'] = detailed_df['ANC4'].apply(categorize_coverage)
     detailed_df['SBA_Category'] = detailed_df['SBA'].apply(categorize_coverage)
     
-    detailed_path = output_dir / "coverage_analysis_detailed.csv"
+    detailed_path = REPORTS_DIR / "coverage_analysis_detailed.csv"
     detailed_df.to_csv(detailed_path, index=False)
     print(f"Detailed results saved to: {detailed_path}")
 
