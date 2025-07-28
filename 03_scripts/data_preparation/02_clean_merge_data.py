@@ -7,8 +7,6 @@ This script cleans and merges the three datasets into a single analysis-ready fi
 2. UN Population data (2022 birth projections)
 3. Under-5 mortality reduction status
 
-Author: Data Analyst
-Date: 2025-01-27
 """
 
 import pandas as pd

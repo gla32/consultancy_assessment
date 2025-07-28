@@ -9,8 +9,6 @@ This script examines the structure and content of all three Excel files to under
 - Country names and year coverage
 - Data quality issues
 
-Author: Data Analyst
-Date: 2025-01-27
 """
 
 import pandas as pd

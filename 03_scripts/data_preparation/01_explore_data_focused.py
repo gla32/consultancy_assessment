@@ -5,8 +5,6 @@ Focused Data Exploration Script for Consultancy Assessment
 This script provides a more targeted exploration of the three Excel files,
 with special handling for the WPP2022 file structure.
 
-Author: Data Analyst
-Date: 2025-01-27
 """
 
 import pandas as pd
