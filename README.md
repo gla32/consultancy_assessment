@@ -11,7 +11,7 @@ Consultancy-Assessment/
 ├── user_profile.py                     # Cross-platform configuration system
 ├── requirements.txt                    # Python dependencies
 ├── run_project.py                      # Main execution script
-├── config.py                           # Legacy configuration (deprecated)
+├── Consultancy_Assessment.Rproj        # R project file
 ├── .gitignore                          # Git ignore patterns
 ├── .gitattributes                      # Git attributes for notebook handling
 │
@@ -40,8 +40,6 @@ Consultancy-Assessment/
 │   └── maternal_health_report.qmd      # Quarto document for professional reporting
 │
 ├── 06_notebooks/                       # Jupyter notebooks for interactive analysis
-│   ├── README.md                       # Notebook documentation
-│   ├── styles.css                      # Custom CSS styling for reports
 │   ├── 01_explore_data.ipynb           # Data exploration and analysis
 │   ├── 02_clean_merge_data.ipynb       # Data cleaning and merging
 │   ├── 01_calculate_coverage.ipynb     # Coverage analysis calculations
@@ -74,7 +72,6 @@ Consultancy-Assessment/
   - Generates execution summary and validation reports
   
 - **`requirements.txt`**: Python package dependencies with version specifications
-- **`config.py`**: Legacy configuration file (deprecated, replaced by user_profile.py)
 
 #### **Data Directories**
 - **`01_raw_data/`**: Original, unmodified datasets as provided
@@ -108,14 +105,10 @@ Organized by workflow stage for clear separation of concerns:
 
 #### **Notebooks Directory (`06_notebooks/`)**
 - **Fully reproducible Jupyter notebooks** for interactive analysis and exploration
-- **Professional Quarto documents** for publication-ready reporting
 - All notebooks tested with "Restart Kernel and Run All Cells" to ensure reproducibility
 - Configured with **nbstripout** to automatically strip outputs before committing
 - Intelligent path detection works from any execution context (project root, notebooks directory, or scripts directory)
 - Contents include:
-  - `maternal_health_report.qmd`: Professional Quarto document with embedded Python analysis
-  - `maternal_health_report.html`: Generated HTML report with embedded resources
-  - `styles.css`: Custom CSS styling for enhanced report presentation
   - `01_explore_data.ipynb`: Comprehensive data exploration with visualizations
   - `02_clean_merge_data.ipynb`: Interactive data cleaning and merging workflow
   - `01_calculate_coverage.ipynb`: Coverage analysis with statistical comparisons
