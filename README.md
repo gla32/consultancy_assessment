@@ -102,6 +102,11 @@ Organized by workflow stage for clear separation of concerns:
 - Contains markdown files documenting data exploration findings and cleaning procedures
 - Supports reproducibility by documenting analytical decisions and data quality assessments
 
+#### **Output Directory (`05_output/`)**
+- **`figures/`**: High-resolution visualizations (PNG format, 300 DPI)
+- **`reports/`**: Analysis results in multiple formats (CSV summaries, HTML report)
+- **`logs/`**: Detailed execution logs for debugging and validation
+
 #### **Notebooks Directory (`06_notebooks/`)**
 - **Fully reproducible Jupyter notebooks** for interactive analysis and exploration
 - All notebooks tested with "Restart Kernel and Run All Cells" to ensure reproducibility
@@ -113,10 +118,6 @@ Organized by workflow stage for clear separation of concerns:
   - `01_calculate_coverage.ipynb`: Coverage analysis with statistical comparisons
   - `01_create_plots.ipynb`: Interactive visualization development and refinement
 
-#### **Output Directory (`05_output/`)**
-- **`figures/`**: High-resolution visualizations (PNG format, 300 DPI)
-- **`reports/`**: Analysis results in multiple formats (CSV summaries, HTML report)
-- **`logs/`**: Detailed execution logs for debugging and validation
 
 ------------------------------------------------------------------------
 
