@@ -132,7 +132,7 @@ Organized by workflow stage for clear separation of concerns:
 ### **Step 1: Environment Setup**
 ```bash
 # Clone the repository
-git clone <your-repository-url>
+git clone https://github.com/gla32/consultancy_assessment.git
 cd Consultancy-Assessment
 
 # Set up and validate environment
