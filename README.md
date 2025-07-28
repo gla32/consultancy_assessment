@@ -216,56 +216,32 @@ xdg-open 05_output/reports/maternal_health_report.html
 
 **Note**: The generated HTML report is self-contained with embedded resources, so it will display correctly even without an internet connection.
 
+### Professional Quarto Report Generation
 
-### **Professional Quarto Report Generation**
-For  professional reporting with Quarto:
+#### Prerequisites
+* Quarto installation
+* Complete all previous analysis steps successfully
 
-#### **Prerequisites for Quarto Reports**
-- Quarto installation (https://quarto.org/docs/get-started/)
-- All previous analysis steps completed successfully
+#### Generate Reports
 
-#### **Generate Quarto Report**
-
-**HTML Report (Default):**
+**HTML Report (Default)**
 ```bash
-# Option 1: Run as part of the complete workflow (generates HTML)
 python run_project.py
-
-# Option 2: Generate Quarto report independently (generates HTML)
-python 03_scripts/visualization/02_generate_quarto_report.py
-
-# Option 3: Render HTML directly with Quarto CLI
-cd 04_documentation
-quarto render maternal_health_report.qmd --to html
 ```
 
-**PDF Report (Optional):**
+**PDF Report (Optional)**
 ```bash
-# Prerequisites: Install LaTeX for PDF generation
 quarto install tinytex
-
-# Render to PDF
-cd 04_documentation
 quarto render maternal_health_report.qmd --to pdf
-
-# The PDF will be generated as maternal_health_report.pdf in the documentation folder
-# Move it to the reports folder for consistency:
-mv maternal_health_report.pdf ../05_output/reports/
 ```
 
-**Both HTML and PDF:**
+**Generate Both Formats**
 ```bash
-# Generate both formats simultaneously
-cd 04_documentation
 quarto render maternal_health_report.qmd --to html --to pdf
-
-# Move PDF to reports folder
-mv maternal_health_report.pdf ../05_output/reports/
 ```
 
-The Quarto report (`05_output/reports/maternal_health_report.html`) provides:
-
-- Population-weighted coverage comparison chart with results interpretation
+#### Output
+The generated report (`05_output/reports/maternal_health_report.html`) includes population-weighted coverage comparison charts with detailed results interpretation.
 
 ### **Interactive Analysis with Jupyter Notebooks**
 For interactive exploration and development:
