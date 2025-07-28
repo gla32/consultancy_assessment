@@ -39,22 +39,21 @@ Consultancy-Assessment/
 │   ├── data_cleaning_summary.md        # Data cleaning documentation
 │   └── maternal_health_report.qmd      # Quarto document for professional reporting
 │
-├── 06_notebooks/                       # Jupyter notebooks for interactive analysis
-│   ├── 01_explore_data.ipynb           # Data exploration and analysis
-│   ├── 02_clean_merge_data.ipynb       # Data cleaning and merging
-│   ├── 01_calculate_coverage.ipynb     # Coverage analysis calculations
-│   └── 01_create_plots.ipynb           # Visualization generation
+├── 05_output/                          # Analysis outputs
+│   ├── figures/
+│   │   └── maternal_health_coverage_comparison.png # Main visualization
+│   ├── reports/
+│   │   ├── coverage_analysis_summary.csv  # Summary statistics
+│   │   ├── coverage_analysis_detailed.csv # Country-level results
+│   │   └── maternal_health_report.html    # Professional Quarto HTML report
+│   └── logs/                              # Execution logs
+│       └── project_execution_[timestamp].log
 │
-└── 05_output/                          # Analysis outputs
-    ├── figures/
-    │   └── maternal_health_coverage_comparison.png # Main visualization
-    ├── reports/
-    │   ├── coverage_analysis_summary.csv  # Summary statistics
-    │   ├── coverage_analysis_detailed.csv # Country-level results
-    │   ├── maternal_health_coverage_report.html # Legacy HTML report
-    │   └── maternal_health_report.html    # Professional Quarto HTML report
-    └── logs/                              # Execution logs
-        └── project_execution_[timestamp].log
+└── 06_notebooks/                       # Jupyter notebooks for interactive analysis
+    ├── 01_explore_data.ipynb           # Data exploration and analysis
+    ├── 02_clean_merge_data.ipynb       # Data cleaning and merging
+    ├── 01_calculate_coverage.ipynb     # Coverage analysis calculations
+    └── 01_create_plots.ipynb           # Visualization generation
 ```
 
 ###  Folder and File Purposes
@@ -182,7 +181,7 @@ This will execute the following pipeline:
 4. **Visualization** → Generate professional charts
 5. **Quarto Report Generation** → Generate professional Quarto HTML report
 
-**Expected execution time**: 2-5 minutes
+
 
 ### **Step 4: Review Outputs**
 After successful execution, check:
@@ -217,27 +216,9 @@ xdg-open 05_output/reports/maternal_health_report.html
 
 **Note**: The generated HTML report is self-contained with embedded resources, so it will display correctly even without an internet connection.
 
-### **Alternative: Step-by-Step Execution**
-For debugging or detailed analysis:
-```bash
-# 1. Data exploration
-python 03_scripts/data_preparation/01_explore_data_focused.py
-
-# 2. Data cleaning and merging
-python 03_scripts/data_preparation/02_clean_merge_data.py
-
-# 3. Coverage analysis
-python 03_scripts/analysis/01_calculate_coverage.py
-
-# 4. Visualization
-python 03_scripts/visualization/01_create_plots.py
-
-# 5. Quarto report generation
-python 03_scripts/visualization/02_generate_quarto_report.py
-```
 
 ### **Professional Quarto Report Generation**
-For enhanced professional reporting with Quarto:
+For  professional reporting with Quarto:
 
 #### **Prerequisites for Quarto Reports**
 - Quarto installation (https://quarto.org/docs/get-started/)
@@ -282,20 +263,9 @@ quarto render maternal_health_report.qmd --to html --to pdf
 mv maternal_health_report.pdf ../05_output/reports/
 ```
 
-#### **Quarto Report Features**
-- **Professional HTML output** with embedded resources (self-contained)
-- **Dynamic visualizations** generated from processed data
-- **Integrated analysis** with Python code execution
-- **Publication-ready formatting** with custom CSS styling
-- **Relative path references** to processed data and figures
-- **Comprehensive interpretation** with key findings and caveats
-
 The Quarto report (`05_output/reports/maternal_health_report.html`) provides:
-- Population-weighted coverage comparison charts
-- Statistical analysis with gap calculations
-- Professional formatting with embedded visualizations
-- Detailed methodology and assumptions
-- Results interpretation with policy implications
+
+- Population-weighted coverage comparison chart with results interpretation
 
 ### **Interactive Analysis with Jupyter Notebooks**
 For interactive exploration and development:
@@ -312,17 +282,6 @@ jupyter lab
 
 **Note**: All notebooks are fully reproducible and can be run with "Restart Kernel and Run All Cells". Outputs are automatically stripped before committing thanks to nbstripout configuration.
 
-### **Troubleshooting**
-```bash
-# Check environment without making changes
-python user_profile.py --check-only
-
-# Regenerate requirements file
-python user_profile.py --generate-requirements
-
-# View detailed system information
-python user_profile.py
-```
 
 ### **Cross-Platform Compatibility**
 This analysis has been tested and validated on:
@@ -346,17 +305,9 @@ This project demonstrates proficiency in:
 
 -  Cross-platform Python development and deployment
 
--  Health data analysis and epidemiological methods
+-   Statistical analysis, data visualization and reporting
 
--  Population-weighted statistical analysis
-
--  Professional data visualization and reporting
-
--  Reproducible research practices
-
--  International health data integration and standardization
-
--  Collaborative workflow design and documentation
+-  Reproducible research practices, collaborative workflow design and documentation
 
 ------------------------------------------------------------------------
 
@@ -365,18 +316,5 @@ This project demonstrates proficiency in:
 - **Language**: Python 3.7+
 - **Key Libraries**: pandas, numpy, matplotlib, seaborn, openpyxl, xlrd
 - **Output Formats**: HTML (primary), PNG (visualizations), CSV (data)
-- **Memory Requirements**: ~500MB
-- **Storage Requirements**: ~50MB
-- **Execution Time**: 2-5 minutes (system dependent)
-
-------------------------------------------------------------------------
-
-##  Methodology Summary
-
-1. **Data Integration**: Merge UNICEF health indicators, UN population data, and SDG track classifications using standardized country identifiers
-2. **Population Weighting**: Calculate coverage using births as weights: Σ(coverage_i × births_i) / Σ(births_i)
-3. **Comparative Analysis**: Statistical comparison between on-track and off-track countries
-4. **Quality Assurance**: Comprehensive validation, logging, and cross-platform testing
-5. **Professional Reporting**: Publication-ready visualizations and comprehensive documentation
 
 ------------------------------------------------------------------------
