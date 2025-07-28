@@ -268,7 +268,7 @@ def main():
         print("• High-resolution PNG format (300 DPI)")
         
         # Display the chart (optional - will show if running interactively)
-        plt.show()
+        #plt.show()
         
     except Exception as e:
         print(f"Error creating visualization: {str(e)}")
