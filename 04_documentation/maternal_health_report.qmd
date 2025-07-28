@@ -1,7 +1,7 @@
 ---
 title: "Maternal Health Coverage Analysis"
-subtitle: "Coverage Gaps Between On-Track and Off-Track Countries for SDG 3.1"
-postion applied to: "Household Survey Data Analyst Consultant – Req.#581656"
+subtitle: "Coverage Gaps Between On-Track and Off-Track Countries for SDG 3.1" 
+description: "Position applied to: Household Survey Data Analyst Consultant – Req.#581656"
 date: today
 format:
   html:
