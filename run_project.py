@@ -3,15 +3,15 @@
 Main Execution Script for Maternal Health Coverage Analysis Project
 ==================================================================
 
-Purpose: Execute the complete workflow end-to-end, producing the final output
-(PDF, HTML, or DOCX report) with proper error handling and progress reporting.
+Purpose: Execute the complete workflow end-to-end, producing the final Quarto
+HTML report with proper error handling and progress reporting.
 
 This script executes scripts in the following order:
-1. Data exploration (01_explore_data.py)
+1. Data exploration (01_explore_data_focused.py)
 2. Data cleaning and merging (02_clean_merge_data.py)
 3. Coverage analysis (01_calculate_coverage.py)
 4. Visualization creation (01_create_plots.py)
-5. Report generation (02_generate_report.py)
+5. Quarto report generation (02_generate_quarto_report.py)
 
 Key Features:
 - Error handling and progress reporting
@@ -19,6 +19,7 @@ Key Features:
 - Graceful handling of script failures
 - Comprehensive logging
 - Final output validation
+- Professional Quarto report generation
 
 """
 
@@ -95,10 +96,10 @@ class ProjectExecutor:
                 'required': True
             },
             {
-                'name': 'Report Generation',
-                'script': '03_scripts/visualization/02_generate_report.py',
-                'description': 'Generate comprehensive HTML report',
-                'expected_outputs': ['05_output/reports/maternal_health_coverage_report.html'],
+                'name': 'Quarto Report Generation',
+                'script': '03_scripts/visualization/02_generate_quarto_report.py',
+                'description': 'Generate professional Quarto HTML report with embedded visualizations',
+                'expected_outputs': ['05_output/reports/maternal_health_report.html'],
                 'required': True
             }
         ]

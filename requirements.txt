@@ -19,3 +19,6 @@ pathlib2>=2.3.0; python_version<"3.4"
 # Development and testing (optional)
 jupyter>=1.0.0
 ipykernel>=6.0.0
+
+# Quarto report generation
+# Note: Quarto must be installed separately from https://quarto.org/

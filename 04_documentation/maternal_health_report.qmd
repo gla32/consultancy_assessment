@@ -1,0 +1,60 @@
+---
+title: "Maternal Health Coverage Analysis"
+subtitle: "Coverage Gaps Between On-Track and Off-Track Countries for SDG 3.1"
+author: "Data Analysis Team"
+date: today
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    fig-width: 10
+    fig-height: 6
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{python}
+#| label: setup
+#| include: false
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from pathlib import Path
+
+# Set up plotting style
+plt.style.use('default')
+
+# Load data
+summary_path = Path("../05_output/reports/coverage_analysis_summary.csv")
+summary_df = pd.read_csv(summary_path)
+
+detailed_path = Path("../05_output/reports/coverage_analysis_detailed.csv")
+detailed_df = pd.read_csv(detailed_path)
+
+# Calculate key statistics
+stats = {}
+for indicator in ['ANC4', 'SBA']:
+    indicator_data = summary_df[summary_df['Indicator'] == indicator]
+    
+    on_track_row = indicator_data[indicator_data['Track_Status'] == 'on-track']
+    off_track_row = indicator_data[indicator_data['Track_Status'] == 'off-track']
+    gap_row = indicator_data[indicator_data['Track_Status'] == 'gap_analysis']
+    
+    if len(on_track_row) > 0 and len(off_track_row) > 0:
+        stats[f'{indicator.lower()}_on_track'] = on_track_row['Weighted_Coverage_Percent'].iloc[0]
+        stats[f'{indicator.lower()}_off_track'] = off_track_row['Weighted_Coverage_Percent'].iloc[0]
+        stats[f'{indicator.lower()}_gap'] = gap_row['Weighted_Coverage_Percent'].iloc[0] if len(gap_row) > 0 else (
+            stats[f'{indicator.lower()}_on_track'] - stats[f'{indicator.lower()}_off_track']
+        )
+```
+
+![Population-weighted maternal health coverage by SDG 3.1 track status](../05_output/figures/maternal_health_coverage_comparison.png)
+
+## Results Interpretation
+
+The analysis reveals significant maternal health coverage gaps between countries on-track and off-track to meet SDG 3.1 targets. Population-weighted coverage shows a `{python} f"{stats['anc4_gap']:.1f}"` percentage point gap for antenatal care (ANC4+) and a `{python} f"{stats['sba_gap']:.1f}"` percentage point gap for skilled birth attendance (SBA). On-track countries achieve `{python} f"{stats['anc4_on_track']:.1f}"`% ANC4+ coverage compared to `{python} f"{stats['anc4_off_track']:.1f}"`% in off-track countries, while SBA coverage is `{python} f"{stats['sba_on_track']:.1f}"`% versus `{python} f"{stats['sba_off_track']:.1f}"`% respectively.
+
+**Key Caveats and Assumptions:** This analysis is based on population-weighted averages using 2022 birth data, which may mask within-country variations and assumes uniform coverage distribution within countries. Coverage data availability varies between indicators (ANC4+ data for 86 countries, SBA data for 149 countries), potentially introducing selection bias. The analysis reflects service utilization rather than quality of care, and country classifications as "on-track" or "off-track" are based on maternal mortality projections that may not capture recent policy changes or improvements. Additionally, the temporal alignment between coverage data (2018-2022) and demographic projections introduces uncertainty, and the analysis does not account for subnational disparities or social determinants that significantly influence access to maternal health services.

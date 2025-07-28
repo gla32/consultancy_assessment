@@ -32,14 +32,16 @@ Consultancy-Assessment/
 │   │   └── 01_calculate_coverage.py    # Coverage analysis calculations
 │   └── visualization/
 │       ├── 01_create_plots.py          # Chart generation
-│       └── 02_generate_report.py       # HTML report generation
+│       └── 02_generate_quarto_report.py # Professional Quarto report generation
 │
 ├── 04_documentation/                   # Analysis documentation
 │   ├── data_exploration_findings.md    # Data exploration results
-│   └── data_cleaning_summary.md        # Data cleaning documentation
+│   ├── data_cleaning_summary.md        # Data cleaning documentation
+│   └── maternal_health_report.qmd      # Quarto document for professional reporting
 │
 ├── 06_notebooks/                       # Jupyter notebooks for interactive analysis
 │   ├── README.md                       # Notebook documentation
+│   ├── styles.css                      # Custom CSS styling for reports
 │   ├── 01_explore_data.ipynb           # Data exploration and analysis
 │   ├── 02_clean_merge_data.ipynb       # Data cleaning and merging
 │   ├── 01_calculate_coverage.ipynb     # Coverage analysis calculations
@@ -51,7 +53,8 @@ Consultancy-Assessment/
     ├── reports/
     │   ├── coverage_analysis_summary.csv  # Summary statistics
     │   ├── coverage_analysis_detailed.csv # Country-level results
-    │   └── maternal_health_coverage_report.html # Final report
+    │   ├── maternal_health_coverage_report.html # Legacy HTML report
+    │   └── maternal_health_report.html    # Professional Quarto HTML report
     └── logs/                              # Execution logs
         └── project_execution_[timestamp].log
 ```
@@ -97,7 +100,7 @@ Organized by workflow stage for clear separation of concerns:
 
 - **`visualization/`**:
   - `01_create_plots.py`: Professional chart generation with publication-ready styling
-  - `02_generate_report.py`: HTML report compilation with embedded visualizations
+  - `02_generate_quarto_report.py`: Professional Quarto report generation with embedded resources
 
 #### **Documentation Directory (`04_documentation/`)**
 - Contains markdown files documenting data exploration findings and cleaning procedures
@@ -105,10 +108,14 @@ Organized by workflow stage for clear separation of concerns:
 
 #### **Notebooks Directory (`06_notebooks/`)**
 - **Fully reproducible Jupyter notebooks** for interactive analysis and exploration
+- **Professional Quarto documents** for publication-ready reporting
 - All notebooks tested with "Restart Kernel and Run All Cells" to ensure reproducibility
 - Configured with **nbstripout** to automatically strip outputs before committing
 - Intelligent path detection works from any execution context (project root, notebooks directory, or scripts directory)
-- Notebooks include:
+- Contents include:
+  - `maternal_health_report.qmd`: Professional Quarto document with embedded Python analysis
+  - `maternal_health_report.html`: Generated HTML report with embedded resources
+  - `styles.css`: Custom CSS styling for enhanced report presentation
   - `01_explore_data.ipynb`: Comprehensive data exploration with visualizations
   - `02_clean_merge_data.ipynb`: Interactive data cleaning and merging workflow
   - `01_calculate_coverage.ipynb`: Coverage analysis with statistical comparisons
@@ -128,6 +135,7 @@ Organized by workflow stage for clear separation of concerns:
 - Internet connection (for dependency installation)
 - ~500MB available memory
 - ~50MB storage space
+- **Quarto** (for professional report generation) - Install from https://quarto.org/docs/get-started/
 
 ### **Step 1: Environment Setup**
 ```bash
@@ -148,11 +156,24 @@ The `user_profile.py` script will:
 
 ### **Step 2: Install Dependencies (if needed)**
 ```bash
-# If dependencies are missing, install them automatically
+# Install Python dependencies
 python user_profile.py --install-deps
 
 # Alternative: Manual installation
 pip install -r requirements.txt
+
+# Install Quarto (required for professional report generation)
+# Visit https://quarto.org/docs/get-started/ for installation instructions
+# Or use package managers:
+
+# On macOS with Homebrew:
+# brew install quarto
+
+# On Windows with Chocolatey:
+# choco install quarto
+
+# On Linux (Ubuntu/Debian):
+# Download from https://github.com/quarto-dev/quarto-cli/releases
 ```
 
 ### **Step 3: Execute Complete Analysis**
@@ -166,15 +187,42 @@ This will execute the following pipeline:
 2. **Data Cleaning** → Standardize and merge datasets
 3. **Coverage Analysis** → Calculate population-weighted statistics
 4. **Visualization** → Generate professional charts
-5. **Report Generation** → Compile final HTML report
+5. **Quarto Report Generation** → Generate professional Quarto HTML report
 
 **Expected execution time**: 2-5 minutes
 
 ### **Step 4: Review Outputs**
 After successful execution, check:
-- **`05_output/reports/maternal_health_coverage_report.html`** - Final comprehensive report
+- **`05_output/reports/maternal_health_report.html`** - Professional Quarto HTML report
 - **`05_output/figures/maternal_health_coverage_comparison.png`** - Main visualization
 - **`05_output/logs/project_execution_[timestamp].log`** - Detailed execution log
+
+### **Step 5: Open the Generated Report**
+To view the professional Quarto HTML report:
+
+#### **Option 1: Using Command Line**
+```bash
+# On macOS
+open 05_output/reports/maternal_health_report.html
+
+# On Windows
+start 05_output/reports/maternal_health_report.html
+
+# On Linux
+xdg-open 05_output/reports/maternal_health_report.html
+```
+
+#### **Option 2: Using File Explorer/Finder**
+1. Navigate to the `05_output/reports/` folder in your file manager
+2. Double-click on `maternal_health_report.html`
+3. The report will open in your default web browser
+
+#### **Option 3: Direct Browser Access**
+1. Open your web browser (Chrome, Firefox, Safari, etc.)
+2. Use Ctrl+O (Windows/Linux) or Cmd+O (macOS) to open a file
+3. Navigate to and select `05_output/reports/maternal_health_report.html`
+
+**Note**: The generated HTML report is self-contained with embedded resources, so it will display correctly even without an internet connection.
 
 ### **Alternative: Step-by-Step Execution**
 For debugging or detailed analysis:
@@ -191,9 +239,70 @@ python 03_scripts/analysis/01_calculate_coverage.py
 # 4. Visualization
 python 03_scripts/visualization/01_create_plots.py
 
-# 5. Report generation
-python 03_scripts/visualization/02_generate_report.py
+# 5. Quarto report generation
+python 03_scripts/visualization/02_generate_quarto_report.py
 ```
+
+### **Professional Quarto Report Generation**
+For enhanced professional reporting with Quarto:
+
+#### **Prerequisites for Quarto Reports**
+- Quarto installation (https://quarto.org/docs/get-started/)
+- All previous analysis steps completed successfully
+
+#### **Generate Quarto Report**
+
+**HTML Report (Default):**
+```bash
+# Option 1: Run as part of the complete workflow (generates HTML)
+python run_project.py
+
+# Option 2: Generate Quarto report independently (generates HTML)
+python 03_scripts/visualization/02_generate_quarto_report.py
+
+# Option 3: Render HTML directly with Quarto CLI
+cd 04_documentation
+quarto render maternal_health_report.qmd --to html
+```
+
+**PDF Report (Optional):**
+```bash
+# Prerequisites: Install LaTeX for PDF generation
+quarto install tinytex
+
+# Render to PDF
+cd 04_documentation
+quarto render maternal_health_report.qmd --to pdf
+
+# The PDF will be generated as maternal_health_report.pdf in the documentation folder
+# Move it to the reports folder for consistency:
+mv maternal_health_report.pdf ../05_output/reports/
+```
+
+**Both HTML and PDF:**
+```bash
+# Generate both formats simultaneously
+cd 04_documentation
+quarto render maternal_health_report.qmd --to html --to pdf
+
+# Move PDF to reports folder
+mv maternal_health_report.pdf ../05_output/reports/
+```
+
+#### **Quarto Report Features**
+- **Professional HTML output** with embedded resources (self-contained)
+- **Dynamic visualizations** generated from processed data
+- **Integrated analysis** with Python code execution
+- **Publication-ready formatting** with custom CSS styling
+- **Relative path references** to processed data and figures
+- **Comprehensive interpretation** with key findings and caveats
+
+The Quarto report (`05_output/reports/maternal_health_report.html`) provides:
+- Population-weighted coverage comparison charts
+- Statistical analysis with gap calculations
+- Professional formatting with embedded visualizations
+- Detailed methodology and assumptions
+- Results interpretation with policy implications
 
 ### **Interactive Analysis with Jupyter Notebooks**
 For interactive exploration and development:
