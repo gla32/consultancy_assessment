@@ -13,6 +13,7 @@ Consultancy-Assessment/
 ├── run_project.py                      # Main execution script
 ├── config.py                           # Legacy configuration (deprecated)
 ├── .gitignore                          # Git ignore patterns
+├── .gitattributes                      # Git attributes for notebook handling
 │
 ├── 01_raw_data/                        # Raw input datasets
 │   ├── GLOBAL_DATAFLOW_2018-2022.xlsx  # UNICEF health indicators
@@ -36,6 +37,13 @@ Consultancy-Assessment/
 ├── 04_documentation/                   # Analysis documentation
 │   ├── data_exploration_findings.md    # Data exploration results
 │   └── data_cleaning_summary.md        # Data cleaning documentation
+│
+├── 06_notebooks/                       # Jupyter notebooks for interactive analysis
+│   ├── README.md                       # Notebook documentation
+│   ├── 01_explore_data.ipynb           # Data exploration and analysis
+│   ├── 02_clean_merge_data.ipynb       # Data cleaning and merging
+│   ├── 01_calculate_coverage.ipynb     # Coverage analysis calculations
+│   └── 01_create_plots.ipynb           # Visualization generation
 │
 └── 05_output/                          # Analysis outputs
     ├── figures/
@@ -94,6 +102,17 @@ Organized by workflow stage for clear separation of concerns:
 #### **Documentation Directory (`04_documentation/`)**
 - Contains markdown files documenting data exploration findings and cleaning procedures
 - Supports reproducibility by documenting analytical decisions and data quality assessments
+
+#### **Notebooks Directory (`06_notebooks/`)**
+- **Fully reproducible Jupyter notebooks** for interactive analysis and exploration
+- All notebooks tested with "Restart Kernel and Run All Cells" to ensure reproducibility
+- Configured with **nbstripout** to automatically strip outputs before committing
+- Intelligent path detection works from any execution context (project root, notebooks directory, or scripts directory)
+- Notebooks include:
+  - `01_explore_data.ipynb`: Comprehensive data exploration with visualizations
+  - `02_clean_merge_data.ipynb`: Interactive data cleaning and merging workflow
+  - `01_calculate_coverage.ipynb`: Coverage analysis with statistical comparisons
+  - `01_create_plots.ipynb`: Interactive visualization development and refinement
 
 #### **Output Directory (`05_output/`)**
 - **`figures/`**: High-resolution visualizations (PNG format, 300 DPI)
@@ -175,6 +194,21 @@ python 03_scripts/visualization/01_create_plots.py
 # 5. Report generation
 python 03_scripts/visualization/02_generate_report.py
 ```
+
+### **Interactive Analysis with Jupyter Notebooks**
+For interactive exploration and development:
+```bash
+# Start Jupyter Lab from project root
+jupyter lab
+
+# Navigate to 06_notebooks/ and run notebooks in order:
+# 1. 01_explore_data.ipynb - Data exploration
+# 2. 02_clean_merge_data.ipynb - Data cleaning
+# 3. 01_calculate_coverage.ipynb - Coverage analysis
+# 4. 01_create_plots.ipynb - Visualization
+```
+
+**Note**: All notebooks are fully reproducible and can be run with "Restart Kernel and Run All Cells". Outputs are automatically stripped before committing thanks to nbstripout configuration.
 
 ### **Troubleshooting**
 ```bash
