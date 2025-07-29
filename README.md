@@ -18,7 +18,7 @@ This project analyzes maternal health coverage disparities between countries on-
 ```bash
 # Clone the repository
 git clone https://github.com/gla32/consultancy_assessment.git
-cd Consultancy-Assessment
+cd consultancy_assessment
 
 # Set up and validate environment
 python user_profile.py
@@ -271,3 +271,9 @@ This project demonstrates proficiency in:
 - Reproducible research practices, collaborative workflow design and documentation
 
 ------------------------------------------------------------------------
+
+## Support
+If you encounter any issues while using this project, or if you have questions about the implementation, you can follow the steps below:
+1. Reporting Issues:
+ - Use the [Issues](https://github.com/gla32/consultancy_assessment/issues) tab in this repository to report bugs, request new features, or raise any concerns.
+ - Provide as much detail as possible, including steps to reproduce the issue, the environment you're running on, and relevant logs or screenshots.
