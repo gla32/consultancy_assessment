@@ -1,7 +1,107 @@
 
 # Consultancy Assessment Project
 
-##  Repository Structure
+## Project Summary
+
+This project analyzes maternal health coverage disparities between countries on-track and off-track for achieving SDG 3.1 (reducing maternal mortality). Using UNICEF health indicators, UN population data, and SDG tracking classifications, the analysis calculates population-weighted coverage rates for key maternal health interventions (ANC4 and skilled birth attendance) and compares outcomes between country groups.
+
+## How to Reproduce This Analysis
+
+### **Prerequisites**
+- Python 3.7 or higher
+- Internet connection (for dependency installation)
+- ~500MB available memory
+- ~50MB storage space
+- **Quarto** (for professional report generation) - Install from https://quarto.org/docs/get-started/
+
+### **Step 1: Environment Setup**
+```bash
+# Clone the repository
+git clone https://github.com/gla32/consultancy_assessment.git
+cd Consultancy-Assessment
+
+# Set up and validate environment
+python user_profile.py
+```
+
+The `user_profile.py` script will:
+-  Check system compatibility (Windows/macOS/Linux)
+-  Validate Python version and dependencies
+-  Confirm data files are present
+-  Create necessary output directories
+-  Display comprehensive system report
+
+### **Step 2: Install Dependencies (if needed)**
+```bash
+# Install Python dependencies
+python user_profile.py --install-deps
+
+# Alternative: Manual installation
+pip install -r requirements.txt
+
+# Install Quarto (required for professional report generation)
+# Visit https://quarto.org/docs/get-started/ for installation instructions
+# Or use package managers:
+
+# On macOS with Homebrew:
+# brew install quarto
+
+# On Windows with Chocolatey:
+# choco install quarto
+
+# On Linux (Ubuntu/Debian):
+# Download from https://github.com/quarto-dev/quarto-cli/releases
+```
+
+### **Step 3: Execute Complete Analysis**
+```bash
+# Run the entire workflow end-to-end
+python run_project.py
+```
+
+This will execute the following pipeline:
+1. **Data Exploration** → Analyze raw data structure and quality
+2. **Data Cleaning** → Standardize and merge datasets
+3. **Coverage Analysis** → Calculate population-weighted statistics
+4. **Visualization** → Generate professional charts
+5. **Quarto Report Generation** → Generate professional Quarto HTML report
+
+
+
+### **Step 4: Review Outputs**
+After successful execution, check:
+- **`05_output/reports/maternal_health_report.html`** - Professional Quarto HTML report
+- **`05_output/figures/maternal_health_coverage_comparison.png`** - Main visualization
+- **`05_output/logs/project_execution_[timestamp].log`** - Detailed execution log
+
+### **Step 5: Open the Generated Report**
+To view the professional Quarto HTML report:
+
+#### **Option 1: Using Command Line**
+```bash
+# On macOS
+open 05_output/reports/maternal_health_report.html
+
+# On Windows
+start 05_output/reports/maternal_health_report.html
+
+# On Linux
+xdg-open 05_output/reports/maternal_health_report.html
+```
+
+#### **Option 2: Using File Explorer/Finder**
+1. Navigate to the `05_output/reports/` folder in your file manager
+2. Double-click on `maternal_health_report.html`
+3. The report will open in your default web browser
+
+#### **Option 3: Direct Browser Access**
+1. Open your web browser (Chrome, Firefox, Safari, etc.)
+2. Use Ctrl+O (Windows/Linux) or Cmd+O (macOS) to open a file
+3. Navigate to and select `05_output/reports/maternal_health_report.html`
+
+**Note**: The generated HTML report is self-contained with embedded resources, so it will display correctly even without an internet connection.
+
+## Repository Structure
 
 This repository follows a structured workflow designed for reproducibility and collaborative development:
 
@@ -121,130 +221,7 @@ Organized by workflow stage for clear separation of concerns:
 
 ------------------------------------------------------------------------
 
-##  How to Reproduce This Analysis
-
-### **Prerequisites**
-- Python 3.7 or higher
-- Internet connection (for dependency installation)
-- ~500MB available memory
-- ~50MB storage space
-- **Quarto** (for professional report generation) - Install from https://quarto.org/docs/get-started/
-
-### **Step 1: Environment Setup**
-```bash
-# Clone the repository
-git clone https://github.com/gla32/consultancy_assessment.git
-cd Consultancy-Assessment
-
-# Set up and validate environment
-python user_profile.py
-```
-
-The `user_profile.py` script will:
--  Check system compatibility (Windows/macOS/Linux)
--  Validate Python version and dependencies
--  Confirm data files are present
--  Create necessary output directories
--  Display comprehensive system report
-
-### **Step 2: Install Dependencies (if needed)**
-```bash
-# Install Python dependencies
-python user_profile.py --install-deps
-
-# Alternative: Manual installation
-pip install -r requirements.txt
-
-# Install Quarto (required for professional report generation)
-# Visit https://quarto.org/docs/get-started/ for installation instructions
-# Or use package managers:
-
-# On macOS with Homebrew:
-# brew install quarto
-
-# On Windows with Chocolatey:
-# choco install quarto
-
-# On Linux (Ubuntu/Debian):
-# Download from https://github.com/quarto-dev/quarto-cli/releases
-```
-
-### **Step 3: Execute Complete Analysis**
-```bash
-# Run the entire workflow end-to-end
-python run_project.py
-```
-
-This will execute the following pipeline:
-1. **Data Exploration** → Analyze raw data structure and quality
-2. **Data Cleaning** → Standardize and merge datasets
-3. **Coverage Analysis** → Calculate population-weighted statistics
-4. **Visualization** → Generate professional charts
-5. **Quarto Report Generation** → Generate professional Quarto HTML report
-
-
-
-### **Step 4: Review Outputs**
-After successful execution, check:
-- **`05_output/reports/maternal_health_report.html`** - Professional Quarto HTML report
-- **`05_output/figures/maternal_health_coverage_comparison.png`** - Main visualization
-- **`05_output/logs/project_execution_[timestamp].log`** - Detailed execution log
-
-### **Step 5: Open the Generated Report**
-To view the professional Quarto HTML report:
-
-#### **Option 1: Using Command Line**
-```bash
-# On macOS
-open 05_output/reports/maternal_health_report.html
-
-# On Windows
-start 05_output/reports/maternal_health_report.html
-
-# On Linux
-xdg-open 05_output/reports/maternal_health_report.html
-```
-
-#### **Option 2: Using File Explorer/Finder**
-1. Navigate to the `05_output/reports/` folder in your file manager
-2. Double-click on `maternal_health_report.html`
-3. The report will open in your default web browser
-
-#### **Option 3: Direct Browser Access**
-1. Open your web browser (Chrome, Firefox, Safari, etc.)
-2. Use Ctrl+O (Windows/Linux) or Cmd+O (macOS) to open a file
-3. Navigate to and select `05_output/reports/maternal_health_report.html`
-
-**Note**: The generated HTML report is self-contained with embedded resources, so it will display correctly even without an internet connection.
-
-### Professional Quarto Report Generation
-
-#### Prerequisites
-* Quarto installation
-* Complete all previous analysis steps successfully
-
-#### Generate Reports
-
-**HTML Report (Default)**
-```bash
-python run_project.py
-```
-
-**PDF Report (Optional)**
-```bash
-quarto install tinytex
-quarto render maternal_health_report.qmd --to pdf
-```
-
-**Generate Both Formats**
-```bash
-quarto render maternal_health_report.qmd --to html --to pdf
-```
-
-#### Output
-The generated report (`05_output/reports/maternal_health_report.html`) includes population-weighted coverage comparison charts with detailed results interpretation.
-
-### **Interactive Analysis with Jupyter Notebooks**
+## Interactive Analysis with Jupyter Notebooks
 For interactive exploration and development:
 ```bash
 # Start Jupyter Lab from project root
@@ -260,11 +237,12 @@ jupyter lab
 **Note**: All notebooks are fully reproducible and can be run with "Restart Kernel and Run All Cells". Outputs are automatically stripped before committing thanks to nbstripout configuration.
 
 
-### **Cross-Platform Compatibility**
+## Cross-Platform Compatibility
+
 This analysis has been tested and validated on:
--  **Windows** (Windows 10/11)
--  **macOS** (macOS 10.15+)
--  **Linux** (Ubuntu 18.04+, CentOS 7+)
+- **Windows** (Windows 10/11)
+- **macOS** (macOS 10.15+)
+- **Linux** (Ubuntu 18.04+, CentOS 7+)
 
 The `user_profile.py` system automatically handles platform-specific differences in:
 - File path separators
@@ -274,24 +252,22 @@ The `user_profile.py` system automatically handles platform-specific differences
 
 ------------------------------------------------------------------------
 
-##  Position Applied For
+## Technical Specifications
+
+- **Language**: Python 3.7+
+- **Key Libraries**: pandas, numpy, matplotlib, seaborn, openpyxl, xlrd
+- **Output Formats**: HTML (primary), PNG (visualizations), CSV (data)
+
+------------------------------------------------------------------------
+
+## Position Applied For
 
 **Household Survey Data Analyst Consultant – Req.#581656**
 
 This project demonstrates proficiency in:
 
--  Cross-platform Python development and deployment
-
--   Statistical analysis, data visualization and reporting
-
--  Reproducible research practices, collaborative workflow design and documentation
-
-------------------------------------------------------------------------
-
-##  Technical Specifications
-
-- **Language**: Python 3.7+
-- **Key Libraries**: pandas, numpy, matplotlib, seaborn, openpyxl, xlrd
-- **Output Formats**: HTML (primary), PNG (visualizations), CSV (data)
+- Cross-platform Python development
+- Statistical analysis, data visualization and reporting
+- Reproducible research practices, collaborative workflow design and documentation
 
 ------------------------------------------------------------------------
